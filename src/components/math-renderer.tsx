@@ -7,39 +7,49 @@ export function MathRenderer({ text, className = "" }: { text: string; className
 
   useEffect(() => {
     if (!containerRef.current) return;
-
-    // Clear previous contents
     containerRef.current.innerHTML = "";
-
     if (!text) return;
 
-    // Simple parser to split normal text and LaTeX math blocks 
-    // This handles both \( ... \) inline and raw expressions
     const wrapper = document.createElement("div");
-    
+
     try {
-      // Preprocess common shorthand if needed, or let KaTeX render the inner HTML string
-      // We replace inline math markers \( ... \) with safe HTML spans for KaTeX
+      // 1. Handle Code blocks (Multi-line ```code``` and inline `code`)
       let processedText = text
-        .replace(/\\\((.*?)\\\)/g, (_, math) => {
-          try {
-            return katex.renderToString(math, { throwOnError: false, displayMode: false });
-          } catch {
-            return `\\(${math}\\)`;
-          }
+        .replace(/```([\s\S]*?)```/g, (_, code) => {
+          const escapedCode = code
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+          return `<pre class="my-2 overflow-x-auto rounded-lg border bg-muted/60 p-3 font-mono text-[0.85em] leading-relaxed"><code>${escapedCode.trim()}</code></pre>`;
         })
-        .replace(/\$\$(.*?)\$\$/g, (_, math) => {
-          try {
-            return katex.renderToString(math, { throwOnError: false, displayMode: true });
-          } catch {
-            return `$$${math}$$`;
-          }
+        .replace(/`([^`]+)`/g, (_, code) => {
+          const escapedInline = code
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+          return `<code class="rounded bg-muted px-1.5 py-0.5 font-mono text-[0.9em]">${escapedInline}</code>`;
         });
 
-      // If text contains un-delimited explicit latex commands like \frac{x}{y} outside brackets,
-      // you can optionally parse them or render the string directly via katex auto-render or innerHTML.
+      // 2. Handle Display Math ($$ ... $$)
+      processedText = processedText.replace(/\$\$(.*?)\$\$/g, (_, math) => {
+        try {
+          return katex.renderToString(math, { throwOnError: false, displayMode: true });
+        } catch {
+          return `$$${math}$$`;
+        }
+      });
+
+      // 3. Handle Inline Math (\( ... \))
+      processedText = processedText.replace(/\\\((.*?)\\\)/g, (_, math) => {
+        try {
+          return katex.renderToString(math, { throwOnError: false, displayMode: false });
+        } catch {
+          return `\\(${math}\\)`;
+        }
+      });
+
       wrapper.innerHTML = processedText;
-    } catch (e) {
+    } catch {
       wrapper.textContent = text;
     }
 
