@@ -23,7 +23,8 @@ export const Route = createFileRoute("/login")({
 });
 
 function LoginPage() {
-  const { signIn, signInWithGoogle } = useAuth();
+  // Assuming resetPassword is exported from your useAuth / lib/auth file
+  const { signIn, signInWithGoogle, resetPassword } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -59,6 +60,24 @@ function LoginPage() {
     }
   }
 
+  // Handle sending the password reset email
+  async function handleForgotPassword() {
+    if (!email.trim()) {
+      toast.error("Please enter your email address first.");
+      return;
+    }
+
+    setBusy(true);
+    try {
+      await resetPassword(email);
+      toast.success("Password reset email sent! Check your inbox.");
+    } catch (err) {
+      toast.error(friendlyAuthError(err));
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <AuthShell title="Welcome back" subtitle="Log in to continue your CET prep streak.">
       <form onSubmit={onSubmit} className="space-y-4">
@@ -67,7 +86,17 @@ function LoginPage() {
           <Input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
+          <div className="flex items-center justify-between">
+            <Label htmlFor="password">Password</Label>
+            <button
+              type="button"
+              onClick={handleForgotPassword}
+              disabled={busy}
+              className="text-xs text-primary hover:underline focus:outline-none"
+            >
+              Forgot password?
+            </button>
+          </div>
           <Input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
         </div>
         <Button type="submit" variant="royal" className="w-full" disabled={busy}>

@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   updateProfile,
+  sendPasswordResetEmail,
   signOut as fbSignOut,
   type User,
 } from "firebase/auth";
@@ -20,6 +21,7 @@ type AuthValue = {
   signIn: (email: string, password: string) => Promise<User>;
   signUp: (name: string, email: string, password: string) => Promise<User>;
   signInWithGoogle: () => Promise<User>;
+  resetPassword: (email: string) => Promise<void>;
   signOut: () => Promise<void>;
 };
 
@@ -96,6 +98,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const cred = await signInWithPopup(auth, provider);
         await ensureUserDoc(cred.user);
         return cred.user;
+      },
+      async resetPassword(email) {
+        const { auth } = await getFirebase();
+        await sendPasswordResetEmail(auth, email);
       },
       async signOut() {
         const { auth } = await getFirebase();
