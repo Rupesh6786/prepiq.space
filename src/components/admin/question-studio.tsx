@@ -10,6 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { RichInline, RichText } from "@/components/rich-text";
 import { updateStoredQuestion, type StoredQuestion } from "@/lib/attempts";
+import { MathRenderer } from "@/components/math-renderer";
 
 type EditorMode = "simple" | "equation" | "code";
 
@@ -69,6 +70,29 @@ export function QuestionStudio({
     requestAnimationFrame(() => {
       el?.focus();
       const pos = start + pad.length + before.length + selected.length;
+      el?.setSelectionRange(pos, pos);
+    });
+  }
+
+  function insertMath(before: string, after = "") {
+    const el = areaRef.current;
+    const start = el?.selectionStart ?? value.length;
+    const end = el?.selectionEnd ?? value.length;
+    const selected = value.slice(start, end);
+
+    // If nothing is selected, wrap the snippet in \(\) automatically
+    // If it's already wrapped or being inserted via tool, keep it clean:
+    const mathContent = `${before}${selected}${after}`;
+    
+    // Check if we are already inside or wrapping with \(\)
+    const finalSnippet = mathContent.startsWith("\\(") ? mathContent : `\\(${mathContent}\\)`;
+    
+    const next = `${value.slice(0, start)}${finalSnippet}${value.slice(end)}`;
+    setValue(next);
+    
+    requestAnimationFrame(() => {
+      el?.focus();
+      const pos = start + finalSnippet.length;
       el?.setSelectionRange(pos, pos);
     });
   }
@@ -169,16 +193,16 @@ export function QuestionStudio({
             {modes.includes("equation") && (
               <Toolbar title="Equation tools">
                 <Tool icon={Sigma} label="Equation" onClick={() => insert("\\(", "\\)")} />
-                <Tool icon={Superscript} label="Power" onClick={() => insert("^{", "}")} />
-                <Tool icon={Subscript} label="Subscript" onClick={() => insert("_{", "}")} />
-                <Tool icon={Radical} label="Square root" onClick={() => insert("\\sqrt{", "}")} />
-                <Tool symbol="a/b" label="Fraction" onClick={() => insert("\\frac{", "}{}") } />
-                <Tool symbol="∫" label="Integral" onClick={() => insert("\\int_{a}^{b} ")} />
-                <Tool symbol="lim" label="Limit" onClick={() => insert("\\lim_{x \\to 0} ")} />
-                <Tool symbol="[::]" label="Matrix" onClick={() => insert("\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}")} />
-                <Tool symbol="v⃗" label="Vector" onClick={() => insert("\\vec{", "}")} />
-                <SymbolPicker label="Greek symbols" symbol="αβ" items={GREEK_SYMBOLS} onPick={(item) => insert(item)} />
-                <SymbolPicker label="Operators" symbol="±" items={OPERATORS} onPick={(item) => insert(item)} />
+                <Tool icon={Superscript} label="Power" onClick={() => insertMath("^{", "}")} />
+                <Tool icon={Subscript} label="Subscript" onClick={() => insertMath("_{", "}")} />
+                <Tool icon={Radical} label="Square root" onClick={() => insertMath("\\sqrt{", "}")} />
+                <Tool symbol="a/b" label="Fraction" onClick={() => insertMath("\\frac{", "}{}")} />
+                <Tool symbol="∫" label="Integral" onClick={() => insertMath("\\int_{a}^{b} ")} />
+                <Tool symbol="lim" label="Limit" onClick={() => insertMath("\\lim_{x \\to 0} ")} />
+                <Tool symbol="[::]" label="Matrix" onClick={() => insertMath("\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}")} />
+                <Tool symbol="v⃗" label="Vector" onClick={() => insertMath("\\vec{", "}")} />
+                <SymbolPicker label="Greek symbols" symbol="αβ" items={GREEK_SYMBOLS} onPick={(item) => insertMath(item)} />
+                <SymbolPicker label="Operators" symbol="±" items={OPERATORS} onPick={(item) => insertMath(item)} />
               </Toolbar>
             )}
 
@@ -233,7 +257,7 @@ export function QuestionStudio({
           <div className="min-w-0">
             <p className="text-sm font-semibold">Live preview — exactly what learners see</p>
             <article className="mt-3 rounded-2xl border bg-background p-5 shadow-sm">
-              <RichText text={draft.q} className="text-base font-semibold" />
+              <MathRenderer text={draft.q} className="text-base font-semibold" />
               <div className="mt-4 space-y-2">
                 {draft.options.map((o, i) => (
                   <div
@@ -243,13 +267,13 @@ export function QuestionStudio({
                     <span className="grid size-6 shrink-0 place-items-center rounded-lg border text-xs">
                       {String.fromCharCode(65 + i)}
                     </span>
-                    <RichInline text={o} className="min-w-0" />
+                    <MathRenderer text={o} className="min-w-0" />
                     {i === draft.answer && <Badge variant="secondary" className="ml-auto">Correct</Badge>}
                   </div>
                 ))}
               </div>
               {draft.explanation && (
-                <RichText text={draft.explanation} className="mt-4 text-sm text-muted-foreground" />
+                <MathRenderer text={draft.explanation} className="mt-4 text-sm text-muted-foreground" />
               )}
             </article>
           </div>
@@ -288,6 +312,7 @@ function Toolbar({ title, children }: { title: string; children: React.ReactNode
     </div>
   );
 }
+
 
 function Tool({
   icon: Icon,

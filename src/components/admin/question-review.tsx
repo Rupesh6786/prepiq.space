@@ -22,7 +22,7 @@ import {
 } from "@/lib/attempts";
 import { invalidateQuestionCache } from "@/lib/questions";
 import { QuestionStudio } from "@/components/admin/question-studio";
-import { RichInline, RichText } from "@/components/rich-text";
+import { MathRenderer } from "@/components/math-renderer";
 
 const ALL = "all";
 const uniq = (xs: (string | undefined)[]) => [...new Set(xs.filter(Boolean) as string[])].sort();
@@ -196,7 +196,7 @@ export function QuestionReview() {
         {filtered.slice(0, 300).map((row) => (
           <article key={row.id} className="rounded-xl border bg-card p-4 shadow-sm">
             <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-              <RichText text={row.q} className="min-w-0 text-sm font-medium" />
+              <MathRenderer text={row.q} className="min-w-0 text-sm font-medium" />
               <div className="flex shrink-0 flex-wrap justify-end gap-2">
                 <Button size="sm" variant="soft" onClick={() => setEditing({ ...row, options: [...row.options] })}>
                   <Pencil className="size-3.5" /> Edit
@@ -218,17 +218,17 @@ export function QuestionReview() {
               {row.options.map((opt, i) => (
                 <li
                   key={i}
-                  className={`rounded-lg border px-3 py-2 text-sm ${i === row.answer ? "border-primary bg-primary/5 font-medium" : ""}`}
+                  className={`rounded-lg border px-3 py-2 text-sm flex items-start gap-2 ${i === row.answer ? "border-primary bg-primary/5 font-medium" : ""}`}
                 >
-                  <span className="mr-2 text-xs text-muted-foreground">{String.fromCharCode(65 + i)}</span>
-                  <RichInline text={opt} />
-                  {i === row.answer && <Badge variant="secondary" className="ml-2">Correct</Badge>}
+                  <span className="shrink-0 text-xs text-muted-foreground">{String.fromCharCode(65 + i)}</span>
+                  <MathRenderer text={opt} className="min-w-0 flex-1" />
+                  {i === row.answer && <Badge variant="secondary" className="ml-auto">Correct</Badge>}
                 </li>
               ))}
             </ol>
 
             {row.explanation && (
-              <RichText text={row.explanation} className="mt-2 text-xs text-muted-foreground" />
+              <MathRenderer text={row.explanation} className="mt-2 text-xs text-muted-foreground" />
             )}
 
             <div className="mt-3 flex flex-wrap gap-2 text-xs">
