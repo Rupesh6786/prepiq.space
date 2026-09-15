@@ -3,7 +3,7 @@ import fs from "node:fs";
 const syllabus = JSON.parse(fs.readFileSync("scripts/syllabus.json", "utf8"));
 const OUT = "scripts/out";
 fs.mkdirSync(OUT, { recursive: true });
-const KEY = process.env.LOVABLE_API_KEY;
+const KEY = "AIzaSyAdt6IHNavAw7KSNP3tbV9JgpElHcTA_8M";
 
 const slug = (s) =>
   s

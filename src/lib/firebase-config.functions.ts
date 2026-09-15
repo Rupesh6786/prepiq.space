@@ -6,7 +6,7 @@ import { createServerFn } from "@tanstack/react-start";
  */
 export const getFirebaseConfig = createServerFn({ method: "GET" }).handler(async () => {
   return {
-    apiKey: process.env["GOOGLE_API_KEY"] ?? "",
+    apiKey: "AIzaSyAdt6IHNavAw7KSNP3tbV9JgpElHcTA_8M",
     authDomain: "studio-7151265920-7892d.firebaseapp.com",
     projectId: "studio-7151265920-7892d",
     storageBucket: "studio-7151265920-7892d.firebasestorage.app",

@@ -30,3 +30,7 @@ node_modules
 *.sw?
 
 dist/
+
+# Environment variables
+.env
+.env.local
