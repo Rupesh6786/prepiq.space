@@ -1,0 +1,252 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+@import "katex/dist/katex.min.css";
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * MAH MCA CET 2027 — "White Royal" design system.
+ * Ivory white canvas, royal indigo ink, imperial gold accent.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-royal: var(--royal);
+  --color-royal-soft: var(--royal-soft);
+  --color-mint: var(--mint);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.995 0.003 95);
+  --foreground: oklch(0.22 0.055 275);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.055 275);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.055 275);
+  --primary: oklch(0.33 0.13 279);
+  --primary-foreground: oklch(0.99 0.005 95);
+  --secondary: oklch(0.965 0.008 280);
+  --secondary-foreground: oklch(0.33 0.13 279);
+  --muted: oklch(0.968 0.006 280);
+  --muted-foreground: oklch(0.52 0.03 275);
+  --accent: oklch(0.95 0.03 90);
+  --accent-foreground: oklch(0.33 0.13 279);
+  --royal: oklch(0.33 0.13 279);
+  --royal-soft: oklch(0.93 0.035 285);
+  --gold: oklch(0.74 0.115 85);
+  --gold-soft: oklch(0.95 0.045 90);
+  --mint: oklch(0.72 0.13 165);
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 95);
+  --success: oklch(0.62 0.15 155);
+  --border: oklch(0.92 0.012 280);
+  --input: oklch(0.92 0.012 280);
+  --ring: oklch(0.33 0.13 279);
+  --chart-1: oklch(0.33 0.13 279);
+  --chart-2: oklch(0.74 0.115 85);
+  --chart-3: oklch(0.62 0.15 155);
+  --chart-4: oklch(0.6 0.16 300);
+  --chart-5: oklch(0.68 0.14 30);
+  --sidebar: oklch(0.24 0.07 278);
+  --sidebar-foreground: oklch(0.95 0.01 280);
+  --sidebar-primary: oklch(0.74 0.115 85);
+  --sidebar-primary-foreground: oklch(0.2 0.05 278);
+  --sidebar-accent: oklch(0.31 0.08 278);
+  --sidebar-accent-foreground: oklch(0.98 0.005 95);
+  --sidebar-border: oklch(0.34 0.07 278);
+  --sidebar-ring: oklch(0.74 0.115 85);
+
+  --gradient-royal: linear-gradient(135deg, oklch(0.33 0.13 279), oklch(0.45 0.15 295));
+  --gradient-gold: linear-gradient(120deg, oklch(0.82 0.1 88), oklch(0.68 0.12 70));
+  --gradient-halo: radial-gradient(
+    60% 60% at 50% 0%,
+    color-mix(in oklab, var(--royal) 14%, transparent),
+    transparent 70%
+  );
+  --shadow-royal: 0 24px 60px -28px color-mix(in oklab, var(--royal) 55%, transparent);
+  --shadow-soft: 0 1px 2px color-mix(in oklab, var(--royal) 8%, transparent),
+    0 12px 32px -20px color-mix(in oklab, var(--royal) 35%, transparent);
+}
+
+.dark {
+  --background: oklch(0.145 0.028 278);
+  --foreground: oklch(0.96 0.008 95);
+  --card: oklch(0.195 0.035 278);
+  --card-foreground: oklch(0.97 0.005 95);
+  --popover: oklch(0.215 0.04 278);
+  --popover-foreground: oklch(0.97 0.005 95);
+  --primary: oklch(0.81 0.105 88);
+  --primary-foreground: oklch(0.17 0.04 278);
+  --secondary: oklch(0.255 0.045 278);
+  --secondary-foreground: oklch(0.97 0.005 95);
+  --muted: oklch(0.245 0.038 278);
+  --muted-foreground: oklch(0.77 0.025 280);
+  --accent: oklch(0.29 0.055 278);
+  --accent-foreground: oklch(0.97 0.005 95);
+  --royal: oklch(0.79 0.105 286);
+  --royal-soft: oklch(0.275 0.07 282);
+  --gold: oklch(0.81 0.105 88);
+  --gold-soft: oklch(0.29 0.055 80);
+  --mint: oklch(0.78 0.12 165);
+  --success: oklch(0.76 0.14 155);
+  --destructive: oklch(0.68 0.19 25);
+  --destructive-foreground: oklch(0.985 0.005 95);
+  --border: oklch(0.42 0.035 278 / 55%);
+  --input: oklch(0.45 0.04 278 / 65%);
+  --ring: oklch(0.8 0.1 88);
+  --chart-1: oklch(0.81 0.105 88);
+  --chart-2: oklch(0.76 0.11 286);
+  --chart-3: oklch(0.76 0.14 155);
+  --chart-4: oklch(0.72 0.13 320);
+  --chart-5: oklch(0.73 0.14 35);
+  --sidebar: oklch(0.17 0.038 278);
+  --sidebar-foreground: oklch(0.96 0.008 95);
+  --sidebar-primary: oklch(0.81 0.105 88);
+  --sidebar-primary-foreground: oklch(0.17 0.04 278);
+  --sidebar-accent: oklch(0.265 0.06 278);
+  --sidebar-accent-foreground: oklch(0.98 0.005 95);
+  --sidebar-border: oklch(0.4 0.045 278 / 60%);
+  --sidebar-ring: oklch(0.81 0.105 88);
+  --gradient-royal: linear-gradient(135deg, oklch(0.84 0.11 90), oklch(0.71 0.13 67));
+  --gradient-gold: linear-gradient(120deg, oklch(0.87 0.09 92), oklch(0.74 0.13 70));
+  --gradient-halo: radial-gradient(
+    60% 60% at 50% 0%,
+    color-mix(in oklab, var(--royal) 10%, transparent),
+    transparent 72%
+  );
+  --shadow-royal: 0 24px 60px -28px color-mix(in oklab, var(--gold) 40%, transparent);
+  --shadow-soft: 0 1px 2px oklch(0.05 0.02 278 / 45%),
+    0 16px 36px -22px oklch(0.05 0.02 278 / 80%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility bg-halo {
+  background-image: var(--gradient-halo);
+}
+
+@utility text-gradient-royal {
+  background-image: var(--gradient-royal);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility surface-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility gold-rule {
+  background-image: var(--gradient-gold);
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-float {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@utility animate-rise {
+  animation: rise-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 2.6s linear infinite;
+}

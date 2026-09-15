@@ -1,0 +1,402 @@
+[
+ {
+  "n": 1,
+  "body": "                                                                                     x\n The probability distribution function of a random variable X is given by f (x) =        ,;0 ≤ x ≤ 6\n                                                                                    18\n = 0, otherwise    Then the value of P (X > 2) is\n               1\n    1\n               9\n              15\n    2\n              18\n               8\n    3\n               9\n               1\n    4\n               6"
+ },
+ {
+  "n": 2,
+  "body": "Find the probability of guessing correctly at least six of 10 answers in a True or False objective test.\n  1         0.377\n  2          0.30\n  3          0.45\n  4          0.75"
+ },
+ {
+  "n": 3,
+  "body": "If, for a binomial distribution, the number of trials is 9, the variance is 2 and the probability of\nsuccess is greater than that of failure, find the probability of both success.\n              1\n  1\n              2\n              3\n  2\n              2\n              4\n  3\n              3\n              2\n  4\n              3"
+ },
+ {
+  "n": 4,
+  "body": "Two customers, Rachana and Bhakti, are visiting a particular shop in the same week (Tuesday to\nSaturday). Each is equally likely to visit the shop on any day as on another day. What is the probability\nthat both will visit the shop on consecutive days?\n\fthat both will visit the shop on consecutive days?\n              4\n  1\n             25\n             16\n  2\n             25\n              9\n  3\n             25\n              8\n  4\n             25"
+ },
+ {
+  "n": 5,
+  "body": "A pendulum swings through an angle of 30∘ and describes an arc of 17.6 cm in length. Find the\nlength of the pendulum.\n  1       23.6 cm\n  2       33.6 cm\n  3       13.6 cm\n  4        34 cm"
+ },
+ {
+  "n": 6,
+  "body": "Two cubes each of volume 64 cm3 are joined end to end. Find the surface area of the resulting\ncuboid.\n\f  1       150 cm\n                    2\n  2       140 cm\n                    2\n  3       160 cm\n                    2\n  4       250 cm\n                    2"
+ },
+ {
+  "n": 7,
+  "body": "The incomes of A, B and C are in the ratio 7 : 9 : 12 and their spending are in the ratio 8 : 9 : 15.\n             1\nIf A saves       of his income, then the savings of A, B and C are in the ratio of\n             4\n             37 : 72\n  1\n             : 49\n             47 : 74\n  2\n             : 99\n             69 : 56\n  3\n             : 48\n             56 : 99\n  4\n             : 69"
+ },
+ {
+  "n": 8,
+  "body": "Two trains, A and B, start simultaneously from two stations 300 km apart. Train A travels at\n60 km/h, and Train B travels at 90 km/h. If a bird starts flying from Train A towards Train B at\n\f120 km/h    and immediately turns back upon reaching Train B, continuing this until the trains meet,\nwhat total distance does the bird cover?\n  1        360 km\n  2        300 km\n  3        240 km\n  4        450 km"
+ },
+ {
+  "n": 9,
+  "body": "Find the distance from the eye at which a coin of 2 cm diameter should be held so as to conceal the\nfull moon whose angular diameter is 31′ .\n  1        2.217 m\n  2        2.111 m\n  3         2 m\n  4         4 m"
+ },
+ {
+  "n": 10,
+  "body": "A circular wire of radius 7.5 cm is cut and bent to lie along the circumference of a hoop of radius\n120 cm. Find (in degrees) the angle subtended at the hoop’s centre.\n  1          ∘\n           22 30\n                  ′\n\f  2           ∘\n            21 12\n                      ′\n  3           ∘\n            12 60\n                      ′\n  4           ∘\n            32 40\n                      ′"
+ },
+ {
+  "n": 11,
+  "body": "The population of a town grows at 10 per year. How long will it take for the population to triple?\n  1        5 log(3)\n  2        10 log(3)\n            log(3)\n  3\n              10\n  4        3 log(10)"
+ },
+ {
+  "n": 12,
+  "body": "A company models the rate of change of concentration by (y 2 + 3xy), dx + (x2 + xy), dy = 0,\nwith y = 1 when x = 1. Find y as a function of x (choose the correct option).\n                  2\n              x\n  1\n            x + 1\n            x + 1\n  2\n                  2\n              x\n\f                        x\n  3            x + 1\n        y\n        = x (−1\n  4\n           −−−−−−\n               3\n        + √1 +   )\n                                            4\n                                            x"
+ },
+ {
+  "n": 13,
+  "body": "A family of parabolas y = ax2 (a > 0) has vertices on the x–axis and axis parallel to y–axis. The\ndifferential equation of this family is:\n                   ′′\n            y\n                        2\n  1         −                       y\n                                        ′\n                            2\n                        x\n            = 0\n  2        y\n               ′\n                    = 2ax\n               y − 2y\n  3\n               = 0\n  4        y = y ,x\n                                ′"
+ },
+ {
+  "n": 14,
+  "body": "The coefficient of xn in the expansion of (1 + x)2n and (1 + x)2n−1 are in the ratio\n\f  1         1 : 2\n  2         1 : 3\n  3         3 : 1\n  4         2 : 1"
+ },
+ {
+  "n": 15,
+  "body": "The equation of a parabola is y 2 = 4x . Which of the following points lies on the parabola?\n  1     (4, 4)   and (4, −4)\n  2     (3, 5)   and (3, −5)\n  3     (1, 3)   and (1, −3)\n  4     (6, 8)   and (6, −8)"
+ },
+ {
+  "n": 16,
+  "body": "In △ABC , sides are a = 9, b = 7, c = 12 . Find angle C (opposite side c) using the Law of\nCosines.\n  1     Approximately 60\n                          ∘\n  2     Approximately 45.01\n                               ∘\n  3     Approximately 80.67\n                               ∘\n\f  3       Approximately 80.67\n          Approximately 97.57\n                                  ∘\n  4"
+ },
+ {
+  "n": 17,
+  "body": "                                       −−−−−−−−          –\nThe number of real solutions of √1 + cos 2x = √2, cos−1 (cos x) in [ 2 , π] is\n                                                                                π\n  1               0\n  2               1\n  3               2\n  4            Infinite"
+ },
+ {
+  "n": 18,
+  "body": "          dy\nGiven ,         + y = 1,    with y(0) = 2, find y(1).\n          dx\n  1        2e\n                −1\n                      + 1\n  2        e\n               −1\n                     + 2\n  3        1 + e\n                      −1\n  4        1 − e\n                      −1"
+ },
+ {
+  "n": 19,
+  "body": "The valid range of x for which cos−1 (2x − 3) is defined is\n  1        [1, 2]\n               1\n  2        [       , 2]\n               5\n               1\n  3        [       , 1]\n               5\n  4        [−1, 1]"
+ },
+ {
+  "n": 20,
+  "body": "                                                                    x − 6       y − 7       z − 7\nThe perpendicular distance of the point P (1, 2, 3) from the line           =           =           is\n                                                                     3           2           −2\n  1                0\n  2                7\n  3                2\n  4                4"
+ },
+ {
+  "n": 21,
+  "body": "The projections of a line segment on the X, Y , Z axes are 12, 4, 3 respectively. The length and\ndirection cosines are\n                      12\n           13;             ,\n                      13\n  1\n             4         3\n                  ,\n             13       13\n                      12\n           19;             ,\n                      19\n  2\n             4         3\n                  ,\n             19       19\n                      12\n           11;             ,\n                      11\n  3\n             4         3\n                  ,\n             11       11\n                      12\n           15;             ,\n                      13\n  4\n             4         3\n                  ,\n             13       13"
+ },
+ {
+  "n": 22,
+  "body": "             1 − x               1\nIf tan−1 (                 ) =       tan\n                                           −1\n                                                x   , then x is\n             1 + x               2\n                  1\n  1\n                  2\n                  1\n  2            –\n              √3\n               –\n  3           √3\n\f  4           2"
+ },
+ {
+  "n": 23,
+  "body": "Find the total number of ways to put 20 balls into 5 boxes so that the first box contains only one ball.\n  1        10 × 3\n                    10\n  2        20 × 4\n                    19\n  3        30 × 2\n                    9\n  4        25 × 7\n                    5"
+ },
+ {
+  "n": 24,
+  "body": "Find the number of arrangements of the letters of the word , INDEPENDENCE, such that\n(i) the words start with I and end with P .\n(ii) all the vowels never occur together.\n           1260,\n  1\n           1646400\n           10500,\n  2\n           1600000\n           15000,\n  3\n           1663200\n\f           11200,\n  4\n           1680000"
+ },
+ {
+  "n": 25,
+  "body": "The number of parallelograms formed by a set of 4 parallel lines intersecting another set of 3 parallel\nlines is\n  1           6\n  2           9\n  3           12\n  4           18"
+ },
+ {
+  "n": 26,
+  "body": "A study finds that employees working fewer hours per week are more productive during their working\nhours and concludes that reducing working hours can increase productivity and job satisfaction.\nWhich assumption underpins the conclusion?\n  1     Employees value job satisfaction over meeting deadlines.\n  2     Increased productivity can compensate for fewer working hours.\n  3     Companies are willing to adapt to new work models.\n  4                                                                f\n\f  4     Reducing working hours always leads to improved job satisfaction.\nPYQ"
+ },
+ {
+  "n": 27,
+  "body": "A study found that employees who worked fewer hours per week were more productive. Which of the\nfollowing, if true, weakens the study’s conclusion?\n  1     Companies with reduced working hours had fewer operational delays.\n  2     Employees with reduced working hours demanded higher wages.\n  3     Employees in creative fields showed the highest productivity improvement.\n  4     Companies with reduced hours reported higher profits."
+ },
+ {
+  "n": 28,
+  "body": "In a certain code “SAND” is written as “UCPF”. How is “STONE” written in that code?\n  1        SRLFE\n  2        UNSOP\n  3        UVQPG\n  4        UDLPQ"
+ },
+ {
+  "n": 29,
+  "body": "Three of the following four words are alike in a certain way and one is different. Select the odd one.\n  1         Goggles\n  2        Spectacles\n  3         Bifocals\n  4      Optical reader"
+ },
+ {
+  "n": 30,
+  "body": "Look at this series: 53, 53, 40, 40, 27, 27, … What number should come next?\n  1           12\n  2           14\n  3           27\n  4           53"
+ },
+ {
+  "n": 31,
+  "body": "In a certain language, “BOOK” is written as 4300, “MATE” as 3900. Then 1600 represents which\n\fword?\n  1        GOOD\n  2        WOOD\n  3        CRAB\n  4        CAGE"
+ },
+ {
+  "n": 32,
+  "body": "If CLAUSE is coded as ECSLUA, then the code of UMPIRE will be\n  1        MRPIUE\n  2        UEMRIP\n  3        ERUMIP\n  4        EURMIP"
+ },
+ {
+  "n": 33,
+  "body": "Birds on trees A and B say: if 2 from B move to A, numbers are equal; if 2 from A move to B, then\nB becomes double of A. Find numbers on A, B .\n  1         8, 12\n\f  2        10, 14\n  3        14, 10\n  4         5, 7"
+ },
+ {
+  "n": 34,
+  "body": "How many pairs of letters are there in “CAMBRIDGE” that have as many letters between them in the\nword as in the English alphabet?\n  1        None\n  2         One\n  3         Two\n  4        Three"
+ },
+ {
+  "n": 35,
+  "body": "Five friends A, B, C, D, E travel from Goa to five cities: Chennai, Kolkata, Delhi, Varanasi,\nBangalore using bus, train, airplane, car, boat (all distinct). Given: C → Bangalore by car; D → by\nboat; B → Kolkata by airplane; E → by train; the Delhi traveler did not use boat; Goa has no bus to\nDelhi or Chennai. Who traveled to Delhi?\n  1          E\n  2          C\n\f  3          D\n  4          A"
+ },
+ {
+  "n": 36,
+  "body": "Statements:\ns1. All incomes are salaries.\ns2. Some salaries are perks.\ns3. Some perks are tangible.\nConclusions:\nc1. Some incomes are tangible.\nc2. At least some perks are salaries.\n  1     Only c1 follows\n  2     Only c2 follows\n  3     Either c1 or c2 follows\n  4     Neither c1 nor c2 follows"
+ },
+ {
+  "n": 37,
+  "body": "Read the given information properly and answer the question given below:\nIn an organization for the selection of marketing manager, the following conditions are there.\n(1) As of 1/12/2025, the age of the candidate must be at least 25 years and not more than 35 years.\n\f(2) The candidate must graduate at a minimum in any discipline with 55% marks.\n(3) The candidate must have secured at least 60% marks in a PG degree/diploma with marketing\nspecialization.\n(4) The candidate must have 5 years experience as an assistant marketing manager after education.\nIf the candidate fulfills all the above conditions except,\n(a) (2) as above, but if he has got minimum 50% in graduation and minimum 65% in PG\ndegree/diploma with marketing specialization, his case must be sent to a marketing head.\n(b) (1) as above, but if his age is not more than 40 years, and he has experience of 8 years as\nassistant marketing manager, then his case should be sent to the managing director.\nIn the following question, details of one candidate are given. You have to select the answer based on\nthe information provided and the conditions given above. You are not to assume anything other than\nthe information provided in the following question.\nMr. Mihir Sharma was born on 24th July 1994. He got 60% on a PG diploma (Marketing). After his PG\ndiploma, he is working as assistant marketing manager in an organization. He got 54% at graduation.\n  1      The information made available is insufficient for making decision.\n  2      The candidate is to be not selected.\n  3      The candidate is to be selected.\n  4      The case is to be referred to the Marketing head."
+ },
+ {
+  "n": 38,
+  "body": "Three of the following four are alike in a certain way and hence form a group. Which one does not\nbelong to the group?\n  1           12\n  2           28\n\f  2          28\n  3          21\n  4          51"
+ },
+ {
+  "n": 39,
+  "body": "The question is based on the six numbers: 283, 347, 518, 829, 748, 827. If the first and third digits\nof each number are interchanged, which number will be the third lowest?\n  1          827\n  2          347\n  3          283\n  4          748"
+ },
+ {
+  "n": 40,
+  "body": "Teacher’ is related to ‘school’ in the same way as ‘cook’ is related to …….\n  1         Food\n  2        Kitchen\n  3        Hostel\n  4        House"
+ },
+ {
+  "n": 41,
+  "body": "If the digits of 5734629 are arranged in ascending order from left to right, how many digits remain in\nthe same position?\n  1         None\n  2            One\n  3            Two\n  4        Three"
+ },
+ {
+  "n": 42,
+  "body": "A man travels 2, km to the north and turns east and travels 10, km, and again he turns north and\ntravels 3, km and again turns to the east and travels 2, km . How far is he from the starting point?\n  1        10km\n  2        13km\n  3        15km\n  4        17km"
+ },
+ {
+  "n": 43,
+  "body": "Ten years ago, the average age of A and B was 20 years. The average age of A, B, C is 30 years\ntoday. How old will C be after 5 years?\n  1          20\n  2          30\n  3          35\n  4          55"
+ },
+ {
+  "n": 44,
+  "body": "Find the odd one out:\n  1        Rose\n  2         Tulip\n  3         Lily\n  4        Carrot"
+ },
+ {
+  "n": 45,
+  "body": "Complete the analogy: Book : Reading :: Knife : ?\n  1        Cutting\n  2         Eating\n  3        Chopping\n  4         Slicing"
+ },
+ {
+  "n": 46,
+  "body": "If “APPLES” is coded as “BQQMFT”, how is “ORANGE” coded?\n  1        Cutting\n  2         Eating\n  3        Chopping\n  4         Slicing"
+ },
+ {
+  "n": 47,
+  "body": "What is the next number in the sequence: 1, 4, 9, 16, 25, ?\n  1           30\n\f  2           36\n  3           42\n  4           50"
+ },
+ {
+  "n": 48,
+  "body": "Which word does not belong to the group?\n  1          Fox\n  2          Wolf\n  3          Bear\n  4          Cat"
+ },
+ {
+  "n": 49,
+  "body": "Complete the analogy: Pineapple : Fruit :: Carrot : ?\n  1        Vegetable\n  2          Root\n  3          Herb\n  4          Leaf"
+ },
+ {
+  "n": 50,
+  "body": "If “BEAN” is coded as “CFBO,” how is “CORN” coded?\n  1        DPOS\n  2        DQPO\n  3        DPQO\n  4        DPOQ"
+ },
+ {
+  "n": 51,
+  "body": "What is the opposite of “Transparent”?\n  1        Opaque\n  2        Clear\n  3        Bright\n  4         Solid"
+ },
+ {
+  "n": 52,
+  "body": "\fQus : 52\nAll roses are flowers. Some flowers are yellow. Which of the following is true?\n  1      All yellow flowers are roses\n  2      Some roses are yellow\n  3      No roses are yellow\n  4      All roses are yellow"
+ },
+ {
+  "n": 53,
+  "body": "Find the missing number in the series: 3, 9, 27, 81, ?\n  1          162\n  2          243\n  3          225\n  4          256"
+ },
+ {
+  "n": 54,
+  "body": "What type of verb is “will” in the sentence, “I will go to the cinema.”?\n\f  1        Action verb\n  2     Linking verb\n  3     Auxiliary verb\n  4     Irregular verb"
+ },
+ {
+  "n": 55,
+  "body": "Which sentence uses a conjunction correctly?\n  1     He likes to read but he doesn’t like to write.\n  2     He likes but to read he doesn’t like to write.\n  3     He but likes to read doesn’t like to write.\n  4     But he likes to read, he doesn’t like to write."
+ },
+ {
+  "n": 56,
+  "body": "Choose the correct synonym for the word “abundant”:\n  1           Rare\n  2         Plentiful\n  3        Insufficient\n\f  4        Scarce"
+ },
+ {
+  "n": 57,
+  "body": "Which combination contains sentences that correctly use idiomatic expressions?\n(A) He hit the nail on the head by solving the issue.\n(B) I am feeling under the weather today.\n(C) She let the cat out of the bag during the meeting.\n(D) We’ll cross that bridge when we come to it.\n  1      (A) and (C) only\n  2      (B), (C) and (D) only\n  3      (A), (B) and (D)\n  4      (A), (B) and (C) only"
+ },
+ {
+  "n": 58,
+  "body": "Imagine a short story titled “The Mysterious Garden,” which narrates the adventures of two children,\nAlice and Theo, who discover a hidden garden behind their home. The garden is magical, with plants\nthat talk and animals that walk on two legs. One day, they meet a wise old tree that gives them a\nseries of riddles to solve, promising a treasure if they succeed. What is the main conflict in the story?\n  1      A dispute between the children\n  2      Solving the riddles\n\f  2     Solving the riddles\n  3     Finding the garden\n  4     Protecting the environment"
+ },
+ {
+  "n": 59,
+  "body": "Which word best describes something extremely ordinary and commonplace?\n  1        Mundane\n  2        Exquisite\n  3     Tremendous\n  4         Scarce"
+ },
+ {
+  "n": 60,
+  "body": "Which of the following sentences demonstrates irony?\n  1     The fire station burned down last night.\n  2     The sun rises in the east.\n  3     She is the tallest person in her class.\n  4     He forgot his own birthday."
+ },
+ {
+  "n": 61,
+  "body": "The ancient art of storytelling has been a cornerstone of human communication for millennia.\nStories are not just entertainment; they serve as a means to convey values, traditions, and\nknowledge. In many cultures, oral storytelling was a primary method for passing down history before\nthe advent of written language. Today, storytelling has taken on new forms, from novels to movies,\nbut its core purpose remains the same: to connect people and make sense of the world. What is the\nmain purpose of the passage?\n  1     To explain how storytelling began\n  2     To highlight the entertainment value of storytelling\n  3     To discuss the role and evolution of storytelling in human culture\n  4     To criticize modern forms of storytelling"
+ },
+ {
+  "n": 62,
+  "body": "The ancient art of storytelling has been a cornerstone of human communication for millennia.\nStories are not just entertainment; they serve as a means to convey values, traditions, and\nknowledge. In many cultures, oral storytelling was a primary method for passing down history before\nthe advent of written language. Today, storytelling has taken on new forms, from novels to movies,\nbut its core purpose remains the same: to connect people and make sense of the world.\nWhat can be inferred from the passage about oral storytelling?\n  1     It became less significant after the advent of written language.\n  2     It was a less effective way of preserving history compared to written records.\n  3     It was the only form of entertainment in ancient cultures\n\f  3     It was the only form of entertainment in ancient cultures.\n  4     It was an essential method for preserving culture and history before written language."
+ },
+ {
+  "n": 63,
+  "body": "What can be inferred from the statement: \"The new policy has left many employees disgruntled\"?\n  1     The employees are pleased with the policy.\n  2     The employees are unhappy with the policy.\n  3     The employees are indifferent to the policy.\n  4     The employees are confused by the policy."
+ },
+ {
+  "n": 64,
+  "body": "Choose the correct option to complete the sentence: \"Neither the manager nor the employees _____\nresponsible for the mistake.\"\n  1          is\n  2         are\n  3        Were\n  4         Was"
+ },
+ {
+  "n": 65,
+  "body": "Choose the correct word to fill the blank: \"The new policy aims to _______ equality among all citizens.\"\n  1         ensure\n  2         assure\n  3        endure\n  4         insure"
+ },
+ {
+  "n": 66,
+  "body": "The area of the equilateral triangle is 49√3 cm². Taking each angular point as centre, circles are\ndrawn with radius equal to half the length of the side of the triangle. Find the area of triangle not\nincluded in the circles. (Take √3 =1.73)\n  1        7 77 cm2\n\f  1        7.77 cm\n  2        6.77 cm2\n  3        5.77 cm2\n  4        8.77 cm2"
+ },
+ {
+  "n": 67,
+  "body": "Identify the correct sentence:\n  1      She don't know the answer.\n  2      She doesn't knows the answer.\n  3      She doesn't know the answer.\n  4      She do not knows the answer."
+ },
+ {
+  "n": 68,
+  "body": "Two circles touch externally. The sum of their areas is 130π sq.cm and the distance between their\ncentres is 14 cm. Find the radii of the circles.\n\f  1     11 cm and 3 cm\n  2     12 cm and 4 cm\n  3     22 cm and 6 cm\n  4     10 cm and 5 cm"
+ },
+ {
+  "n": 69,
+  "body": "The invention of the printing press was a turning point in human history. It enabled mass production\nof books, leading to the widespread dissemination of knowledge and ideas. This innovation also laid\nthe foundation for the Reformation and the Enlightenment.” What was the primary effect of the\nprinting press?\n  1     It led to the Renaissance.\n  2     It facilitated mass production of books.\n  3     It introduced the concept of the Enlightenment.\n  4     It ended the Dark Ages."
+ },
+ {
+  "n": 70,
+  "body": "Calculate the area other than the area common between two quadrants of circles of radius 16 cm\neach, which is shown as the shaded region in the figure given.\n\f  1        111.92 cm²\n  2        110.92 cm²\n  3        109.72 cm²\n  4        120.92 cm²"
+ },
+ {
+  "n": 71,
+  "body": "Arrange the following sentences to form a coherent paragraph:\n1.It ensures survival and fosters innovation.\n2.Collaboration is vital in today's world.\n3.Working together allows for diverse perspectives.\n4.Teamwork leads to better solutions.\n  1         2, 3, 4, 1\n  2         4, 3, 2, 1\n  3         2, 4, 1, 3\n  4        2 , 1 , 3 ,4"
+ },
+ {
+  "n": 72,
+  "body": "Find the area of a sector of a circle with radius 6 cm if angle of the sector is 60°.\n                    cm2\n                6\n  1        28\n                7\n                    cm2\n                6\n  2        18\n                7\n                    cm2\n               18\n  3        7\n               7\n                    cm2\n               18\n  4        6\n               7"
+ },
+ {
+  "n": 73,
+  "body": "Choose the sentence with correct punctuation:\n  1      It's raining, I should take an umbrella.\n  2      Its raining; I should take an umbrella.\n  3      It's raining; I should take an umbrella.\n  4      Its raining I should take an umbrella."
+ },
+ {
+  "n": 74,
+  "body": "\fQus : 74\nIf X denotes the number obtained on the uppermost face of cubit die when it is tossed, then E(X) is\n  1         2/7\n  2         7/2\n  3          1\n  4         1/2"
+ },
+ {
+  "n": 75,
+  "body": "Find the part with an error: \"The committee have decided to postpone their meeting until next week.\"\n  1     The committee\n  2     have decided\n  3     to postpone their meeting\n  4     until next week"
+ },
+ {
+  "n": 76,
+  "body": "Global warming is causing unprecedented climate changes worldwide. Rising temperatures are\nleading to melting ice caps, rising sea levels, and extreme weather events.\" What is one major\nconsequence of global warming mentioned in the passage?\n\fconsequence of global warming mentioned in the passage?\n  1     Decreased global temperatures\n  2     Rising sea levels\n  3     Stabilization of weather patterns\n  4     Growth of ice caps"
+ },
+ {
+  "n": 77,
+  "body": "Identify the sentence with correct subject-verb agreement.\n  1     The bouquet of flowers were on the table.\n  2     Each of the students have completed the assignment.\n  3     The committee has decided to postpone the meeting.\n  4     The list of names are on the notice board."
+ },
+ {
+  "n": 78,
+  "body": "Arrange the following sentences logically:\n1.He rushed to the station.\n2.The train had already left.\n3.He wanted to catch the train.\n4.He was disappointed.\n\f  1        1-2-3-4\n  2        3-1-2-4\n  3        3-2-1-4\n  4        2-3-1-4"
+ },
+ {
+  "n": 79,
+  "body": "Which of the following is not a type of computer architecture?\n  1     Von Neumann Architecture\n  2     Harvard Architecture\n  3     Instruction Set Architecture\n  4     Neural Architecture"
+ },
+ {
+  "n": 80,
+  "body": "What is the binary equivalent of the decimal number 13?\n  1         1101\n  2         1011\n\f  3           1110\n  4           1001"
+ },
+ {
+  "n": 81,
+  "body": "What is the result of the binary subtraction 1100 − 1010 using 2's complement?\n  1           0010\n  2           0100\n  3           1010\n  4           1110"
+ },
+ {
+  "n": 82,
+  "body": "Which of the following is a correct way to declare a variable in C?\n  1           int x;\n  2           x int;\n  3        int x = \"10\";\n  4      float x = '10';"
+ },
+ {
+  "n": 83,
+  "body": "What is the main difference between a process and a thread?\n  1       A process is a lightweight task, while a thread is a heavyweight task\n  2       A thread has its own memory space, while a process shares memory\n  3       A process has its own memory space, while a thread shares the memory of the process\n  4       Threads cannot run concurrently, but processes can"
+ },
+ {
+  "n": 84,
+  "body": "#include <stdio.h>\nint main() {\n   printf(\"%d\", 5 + 3 * 2);\n   return 0;\n}\n  1            11\n  2            16\n  3            13\n  4            8"
+ },
+ {
+  "n": 85,
+  "body": "Which data structure uses the FIFO (First In, First Out) principle?\n  1          Stack\n  2          Queue\n  3        Linked List\n  4        Binary Tree"
+ },
+ {
+  "n": 86,
+  "body": "Which register in a CPU holds the address of the next instruction to be executed?\n  1      Program Counter\n  2      Accumulator\n  3      Instruction Register\n  4      Stack Pointer"
+ },
+ {
+  "n": 87,
+  "body": "Interval between the time of submission and completion of the job is called...\n  1      Waiting time\n  2      Turnaround time\n  3        Throughput\n  4      Response time"
+ },
+ {
+  "n": 88,
+  "body": "________ is a technique of improving the priority of process waiting in Queue for CPU.\n  1        Starvation\n  2         Ageing\n  3        Revocation\n  4        Relocation"
+ },
+ {
+  "n": 89,
+  "body": "What traversal method is used to traverse a binary tree in the order: left subtree, root, right subtree?\n  1         Preorder\n  2         Inorder\n\f  3        Postorder\n  4        Level Order"
+ },
+ {
+  "n": 90,
+  "body": "What does the term RISC stand for in computer architecture?\n  1     Reduced Instruction Set Computer\n  2     Recursive Instruction Set Compiler\n  3     Random Integrated System Compiler\n  4     Registered Instruction Set Computer"
+ },
+ {
+  "n": 91,
+  "body": "The first generation of computers used which of the following components?\n  1        Transistors\n  2     Integrated Circuits\n  3     Vacuum Tubes\n  4     Microprocessors"
+ },
+ {
+  "n": 92,
+  "body": "Convert the decimal number 45 into binary.\n  1        101101\n  2        111001\n  3        110101\n  4        101011"
+ },
+ {
+  "n": 93,
+  "body": "How many bits are used to represent a character in ASCII encoding?\n  1          7\n  2          8\n  3          16\n  4          32"
+ },
+ {
+  "n": 94,
+  "body": "\fQus : 94\nWhich statement is true about compilers?\n  1     They execute the code line-by-line.\n  2     They generate machine code for the entire program at once.\n  3     They are faster than interpreters in error detection.\n  4     They are used to execute scripts dynamically."
+ },
+ {
+  "n": 95,
+  "body": "Which of the following scheduling algorithms is non-preemptive?\n  1     Round Robin\n  2     First-Come-First-Serve (FCFS)\n  3     Shortest Remaining Time First (SRTF)\n  4     Priority Scheduling with Preemption"
+ },
+ {
+  "n": 96,
+  "body": "What is the hexadecimal representation of the binary number 10110111₂?\n\f  1         B7₁₆\n  2         A7₁₆\n  3         77₁₆\n  4         57₁₆"
+ },
+ {
+  "n": 97,
+  "body": "Simplify the Boolean expression A·(B + C).\n  1        AB + AC\n  2         A+B\n  3         A·B·C\n  4        AB·AC"
+ },
+ {
+  "n": 98,
+  "body": "In a Venn diagram, what does the overlapping region of two sets A and B represent?\n  1     Union of A and B\n  2     Intersection of A and B\n  3     Complement of A\n\f  4     Difference between A and B"
+ },
+ {
+  "n": 99,
+  "body": "Select a figure from among the answer figures which will continue the same series as given in the\nProblem Figures.\n  1\n  2\n  3\n  4"
+ },
+ {
+  "n": 100,
+  "body": " How many parallelograms are there in the following figure?\n    1         12\n    2         20\n    3         29\n    4         30\n                                              Online Test Series,\n                                        Information About Examination,\n                                             Syllabus, Notification\n                                                   and More.\n                                                Click Here to\n                View More\nAsk Your Question or Put Your Review.\n                                                                                           Add Comment\n\f Visit Us\nCorp Office / Postal Address : 167, Lakhanpur,\nKanpur - 208024, INDIA\nContact US\n Phone (India) : +91-8400072444, +91-7007286637 (tel:+91-8400072444)\n✉ Email : team@aspirestudy.in (mailto:team@aspirestudy.in)\n Join Us on\n                                                 General Links\n                      Terms of Use\n                      Privacy Policy\n                     Cookies Policy\nCopyright ©"
+ }
+]

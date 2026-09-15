@@ -1,0 +1,81 @@
+rules_version = '2';
+
+// Firestore security rules for the PrepIQ.space MAH MCA CET platform.
+// Admins are hardcoded by UID here and mirrored in src/lib/admins.ts.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.uid in [
+        'vvggelVeCKZdkqT1orVBnucy2Xu2'
+      ];
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // User profiles: name, phone, email, avatar (data URL) and progress counters.
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid);
+      allow update: if isOwner(uid) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Test attempts: one row per submitted test (mock / PYQ / custom filter test).
+    match /attempts/{attemptId} {
+      allow read: if isAdmin()
+        || (isSignedIn() && resource.data.uid == request.auth.uid);
+      allow create: if isSignedIn()
+        && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    // Question bank: every practice, mock and PYQ question lives here.
+    // Students read only; admins create, edit (review page / editor) and delete.
+    match /questions/{questionId} {
+      allow read: if isSignedIn();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Uploaded PDF parsing jobs / metadata.
+    match /uploads/{uploadId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Questions submitted by learners from their profile, pending approval.
+    match /user_questions/{docId} {
+      allow read: if isAdmin()
+        || (isSignedIn() && resource.data.uid == request.auth.uid);
+      allow create: if isSignedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.q is string
+        && request.resource.data.options.size() == 4;
+      allow update, delete: if isAdmin();
+    }
+
+    // Contact / support messages sent from the public contact page.
+    match /support_messages/{docId} {
+      allow read, update, delete: if isAdmin();
+      allow create: if request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() < 5000;
+    }
+
+    // Papers (PYQ / mock cards) published by admins from the paper manager.
+    match /papers/{paperId} {
+      allow read: if isSignedIn();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
