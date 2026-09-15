@@ -16,6 +16,13 @@ import {
 import { SYLLABUS } from "@/data/syllabus";
 import { addStoredQuestions, listStoredQuestions, type StoredQuestion } from "@/lib/attempts";
 
+const SUBJECT_OPTIONS = [
+  "Mathematics & Statistics",
+  "Logical / Abstract Reasoning",
+  "English & Verbal Ability",
+  "Computer Concepts",
+] as const;
+
 const emptyDraft = {
   q: "",
   options: ["", "", "", ""],
@@ -23,6 +30,9 @@ const emptyDraft = {
   difficulty: "medium",
   explanation: "",
   topicId: SYLLABUS[0]!.id,
+  source: "admin",
+  subject: SYLLABUS[0]?.subject || SUBJECT_OPTIONS[0],
+  chapter: SYLLABUS[0]?.chapter || "",
 };
 
 export function QuestionEditor() {
@@ -42,13 +52,24 @@ export function QuestionEditor() {
   const filtered = useMemo(
     () =>
       stored.filter((s) =>
-        `${s.q} ${s.topic} ${s.subject}`.toLowerCase().includes(search.trim().toLowerCase()),
+        `${s.q} ${s.topic} ${s.subject} ${s.source || ""}`.toLowerCase().includes(search.trim().toLowerCase()),
       ),
     [stored, search],
   );
 
+  // Automatically sync subject and chapter when a syllabus topic is chosen
+  function handleTopicChange(topicId: string) {
+    const row = SYLLABUS.find((r) => r.id === topicId);
+    setDraft((prev) => ({
+      ...prev,
+      topicId,
+      subject: row ? row.subject : prev.subject,
+      chapter: row ? row.chapter : prev.chapter,
+    }));
+  }
+
   async function save() {
-    const row = SYLLABUS.find((r) => r.id === draft.topicId)!;
+    const row = SYLLABUS.find((r) => r.id === draft.topicId);
     if (!draft.q.trim() || draft.options.some((o) => !o.trim())) {
       toast.error("Fill the question and all four options.");
       return;
@@ -60,15 +81,15 @@ export function QuestionEditor() {
       answer: draft.answer,
       difficulty: draft.difficulty,
       explanation: draft.explanation.trim(),
-      subject: row.subject,
-      chapter: row.chapter,
-      topic: row.topic,
-      source: "admin",
+      subject: draft.subject,
+      chapter: row ? row.chapter : "",
+      topic: row ? row.topic : "",
+      source: draft.source.trim() || "admin",
     };
     try {
       await addStoredQuestions([question]);
       setStored((s) => [question, ...s]);
-      setDraft({ ...emptyDraft, topicId: draft.topicId });
+      setDraft({ ...emptyDraft, topicId: draft.topicId, subject: SYLLABUS[0]?.subject || SUBJECT_OPTIONS[0] });
       toast.success("Question added to the bank");
     } catch {
       toast.error("Could not save the question");
@@ -109,7 +130,7 @@ export function QuestionEditor() {
 
           <div className="space-y-2">
             <Label>Topic</Label>
-            <Select value={draft.topicId} onValueChange={(v) => setDraft({ ...draft, topicId: v })}>
+            <Select value={draft.topicId} onValueChange={handleTopicChange}>
               <SelectTrigger><SelectValue /></SelectTrigger>
               <SelectContent className="max-h-72">
                 {SYLLABUS.map((r) => (
@@ -117,6 +138,27 @@ export function QuestionEditor() {
                 ))}
               </SelectContent>
             </Select>
+          </div>
+
+          <div className="space-y-2">
+            <Label>Subject</Label>
+            <Select value={draft.subject} onValueChange={(v) => setDraft({ ...draft, subject: v })}>
+              <SelectTrigger><SelectValue placeholder="Select subject" /></SelectTrigger>
+              <SelectContent>
+                {SUBJECT_OPTIONS.map((sub) => (
+                  <SelectItem key={sub} value={sub}>{sub}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="space-y-2">
+            <Label>Source</Label>
+            <Input
+              value={draft.source}
+              onChange={(e) => setDraft({ ...draft, source: e.target.value })}
+              placeholder="e.g. admin, PDF parser, PYQ..."
+            />
           </div>
 
           <div className="space-y-2">
@@ -141,7 +183,7 @@ export function QuestionEditor() {
           <Button variant="royal" onClick={save} disabled={saving}>
             <Plus className="size-4" /> {saving ? "Saving…" : "Add question"}
           </Button>
-          <Button variant="ghost" onClick={() => setDraft({ ...emptyDraft, topicId: draft.topicId })}>
+          <Button variant="ghost" onClick={() => setDraft({ ...emptyDraft, topicId: draft.topicId, subject: SYLLABUS[0]?.subject || SUBJECT_OPTIONS[0] })}>
             <Trash2 className="size-4" /> Clear
           </Button>
         </div>
@@ -150,7 +192,7 @@ export function QuestionEditor() {
       <section>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="font-display text-lg font-bold">Stored questions ({stored.length})</h2>
-          <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search questions…" className="max-w-xs" />
+          <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search questions, subjects, sources…" className="max-w-xs" />
         </div>
         <div className="mt-4 space-y-3">
           {loading && <p className="text-muted-foreground">Loading…</p>}
@@ -164,6 +206,8 @@ export function QuestionEditor() {
               <p className="text-sm font-medium">{s.q}</p>
               <div className="mt-2 flex flex-wrap gap-2 text-xs">
                 <Badge variant="secondary">{s.topic}</Badge>
+                {s.subject && <Badge variant="outline">Subject: {s.subject}</Badge>}
+                {s.source && <Badge variant="outline">Source: {s.source}</Badge>}
                 <Badge variant="outline">{s.difficulty}</Badge>
                 <Badge variant="outline">Ans: {s.options[s.answer]}</Badge>
               </div>

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
+import { SYLLABUS } from "@/data/syllabus";
 import {
   Select,
   SelectContent,
@@ -34,6 +35,12 @@ const CONTENT_FILTERS: { id: ContentFilter; label: string }[] = [
   { id: "unordered", label: "Bullet list" },
   { id: "code", label: "Code" },
 ];
+const SUBJECT_OPTIONS = [
+  "Mathematics & Statistics",
+  "Logical / Abstract Reasoning",
+  "English & Verbal Ability",
+  "Computer Concepts",
+] as const;
 
 function hasContent(row: StoredQuestion, kind: ContentFilter) {
   const text = [row.q, ...row.options, row.explanation ?? ""].join("\n");
@@ -282,7 +289,56 @@ export function QuestionReview() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="Topic">
-                  <Input value={editing.topic} onChange={(e) => setEditing({ ...editing, topic: e.target.value })} />
+                  <Select
+                    value={
+                      SYLLABUS.find((r) => r.topic === editing.topic)?.id ||
+                      SYLLABUS[0]!.id
+                    }
+                    onValueChange={(topicId) => {
+                      const row = SYLLABUS.find((r) => r.id === topicId);
+                      if (row) {
+                        setEditing({
+                          ...editing,
+                          topic: row.topic,
+                          subject: row.subject,
+                          chapter: row.chapter,
+                        });
+                      }
+                    }}
+                  >
+                    <SelectTrigger><SelectValue placeholder="Select topic" /></SelectTrigger>
+                    <SelectContent className="max-h-72">
+                      {SYLLABUS.map((r) => (
+                        <SelectItem key={r.id} value={r.id}>
+                          {r.subject.split(" ")[0]} · {r.topic}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </Field>
+
+                <Field label="Subject">
+                  <Select
+                    value={editing.subject || SUBJECT_OPTIONS[0]}
+                    onValueChange={(v) => setEditing({ ...editing, subject: v })}
+                  >
+                    <SelectTrigger><SelectValue placeholder="Select subject" /></SelectTrigger>
+                    <SelectContent>
+                      {SUBJECT_OPTIONS.map((sub) => (
+                        <SelectItem key={sub} value={sub}>{sub}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </Field>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label="Source">
+                  <Input
+                    value={editing.source ?? "admin"}
+                    onChange={(e) => setEditing({ ...editing, source: e.target.value })}
+                    placeholder="e.g. admin, PDF parser, PYQ..."
+                  />
                 </Field>
                 <Field label="Difficulty">
                   <Picker
