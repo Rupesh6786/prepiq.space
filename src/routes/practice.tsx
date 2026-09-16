@@ -198,10 +198,10 @@ function PracticePage() {
           </p>
         )}
 
-        {/* ---------------- Generated full mock ---------------- */}
+        {/* ---------------- Generated full mock (List View) ---------------- */}
         <section className="mt-8">
           <h2 className="font-display text-xl font-bold">Full mock tests</h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 flex flex-col gap-3">
             <TestCard
               kind="MOCK"
               title="Generate full mock"
@@ -360,29 +360,39 @@ function TestCard({
   highlight?: boolean;
 }) {
   return (
-    <article className="surface-card group flex flex-col overflow-hidden transition hover:-translate-y-1">
-      <div
-        className="relative h-24 overflow-hidden"
-        style={{ backgroundImage: highlight ? "var(--gradient-royal)" : "var(--gradient-gold)" }}
-      >
-        <div className="animate-float absolute -top-8 -right-6 size-24 rounded-full bg-white/20 blur-2xl" />
-        <div className="animate-float absolute -bottom-10 left-4 size-20 rounded-full bg-white/15 blur-xl" />
-        <span className="absolute top-3 left-4 rounded-full bg-white/25 px-3 py-1 text-xs font-bold tracking-wide text-white uppercase backdrop-blur">
-          {kind === "PYQ" ? <FileText className="mr-1 inline size-3" /> : <Sparkles className="mr-1 inline size-3" />}
-          {kind}
-        </span>
+    <article
+      className={`group flex flex-col gap-4 rounded-xl border bg-card p-4 sm:p-5 shadow-sm transition hover:border-primary/50 ${
+        highlight ? "border-primary/60 bg-primary/5 shadow-md" : ""
+      }`}
+    >
+      <div className="space-y-1">
+        <h3 className="font-display text-base font-bold leading-snug break-words">{title}</h3>
+        <p className="text-xs text-muted-foreground line-clamp-2">{subtitle}</p>
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-display text-base font-bold">{title}</h3>
-        <p className="mt-1 text-xs text-muted-foreground">{subtitle}</p>
-        <div className="mt-3 flex flex-wrap gap-2">
+
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-border/50">
+        <div className="flex flex-wrap items-center gap-2">
           <Badge variant="secondary">
             <Timer className="mr-1 size-3" /> {minutes} min
           </Badge>
           <Badge variant="outline">{total} questions</Badge>
+          <span
+            className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+              kind === "PYQ"
+                ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
+                : "bg-primary/10 text-primary"
+            }`}
+          >
+            {kind === "PYQ" ? <FileText className="mr-1 size-3" /> : <Sparkles className="mr-1 size-3" />}
+            {kind}
+          </span>
         </div>
-        <Button variant={highlight ? "royal" : "gold"} className="mt-5 w-full" onClick={onStart}>
-          Start test <ArrowRight className="size-4" />
+        <Button
+          variant={highlight ? "royal" : "outline"}
+          className="w-full sm:w-auto"
+          onClick={onStart}
+        >
+          Start test <ArrowRight className="ml-1.5 size-4" />
         </Button>
       </div>
     </article>
