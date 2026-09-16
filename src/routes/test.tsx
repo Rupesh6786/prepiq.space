@@ -31,6 +31,24 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useAuth } from "@/lib/auth";
 
+const EXCLUDE_SOURCES = new Set(["EASY_QUESTIONS", ""]);
+
+const SUBJECT_ORDER: Record<string, number> = {
+      "Mathematics & Statistics": 1,
+      "Logical / Abstract Reasoning": 2,
+      "English & Verbal Ability": 3,
+      "Computer Concepts": 4,
+    };
+
+    function sortQuestionsBySubject(questions: Question[]): Question[] {
+      return questions.sort((a, b) => {
+        const orderA = SUBJECT_ORDER[a.subject] ?? 99;
+        const orderB = SUBJECT_ORDER[b.subject] ?? 99;
+        if (orderA !== orderB) return orderA - orderB;
+        return a.subject.localeCompare(b.subject); // Fallback for any other subjects
+      });
+    }
+
 type TestSearch = {
   subject: string;
   chapter: string;
@@ -106,6 +124,8 @@ function TestPage() {
   useEffect(() => {
     if (!user) return;
     const load = async () => {
+      let pool: Question[] = [];
+
       if (s.paper) {
         const { getPaper } = await import("@/lib/profile");
         const paper = await getPaper(s.paper);
@@ -115,9 +135,10 @@ function TestPage() {
         const f = paper.filters ?? {};
         const inList = (list: string[] | undefined, value: string) =>
           !list || !list.length || list.includes(value);
-        const pool = dedupeByWording(
+        pool = dedupeByWording(
           all.filter(
             (q) =>
+              !EXCLUDE_SOURCES.has(q.source) &&
               inList(f.sources, q.source) &&
               inList(f.subjects, q.subject) &&
               inList(f.chapters, q.chapter) &&
@@ -126,31 +147,39 @@ function TestPage() {
           ),
         );
         if (!pool.length) throw new Error("This paper has no questions yet.");
-        return shuffle(pool).slice(0, Math.max(1, paper.total || pool.length));
+        const selected = shuffle(pool).slice(0, Math.max(1, paper.total || pool.length));
+        return sortQuestionsBySubject(selected);
       }
+
       if (s.set === "mock100") {
         const all = await loadQuestionBank();
-        const picked = buildWeightedMock(all, Math.max(4, s.count || 100));
+        const validBank = all.filter((q) => !EXCLUDE_SOURCES.has(q.source));
+        const picked = buildWeightedMock(validBank, Math.max(4, s.count || 100));
         if (!picked.length) throw new Error("The question bank is empty.");
-        return picked;
+        return sortQuestionsBySubject(picked);
       }
+
       if (s.set !== "bank") {
-        const paper = dedupeByWording(await loadQuestionSet(s.set));
+        const rawSet = await loadQuestionSet(s.set);
+        const paper = dedupeByWording(rawSet.filter((q) => !EXCLUDE_SOURCES.has(q.source)));
         if (!paper.length) throw new Error("This question paper is empty.");
-        return paper;
+        return sortQuestionsBySubject(paper);
       }
+
       const bank = await loadQuestionBank();
-      const pool = dedupeByWording(
+      pool = dedupeByWording(
         filterQuestions(bank, {
           subject: s.subject,
           chapter: s.chapter,
           topic: s.topic,
           difficulty: s.difficulty,
-        }),
+        }).filter((q) => !EXCLUDE_SOURCES.has(q.source)),
       );
+
       if (!pool.length) throw new Error("No questions match the chosen filters.");
       const size = s.mode === "timed" ? Math.min(pool.length, 100) : Math.min(Math.max(5, s.count), pool.length);
-      return shuffle(pool).slice(0, size);
+      const selected = shuffle(pool).slice(0, size);
+      return sortQuestionsBySubject(selected);
     };
 
     load()
@@ -163,7 +192,7 @@ function TestPage() {
         qStartedAt.current = Date.now();
       })
       .catch((e: Error) => setError(e.message));
-  }, [user, s.subject, s.chapter, s.topic, s.difficulty, s.mode, s.count, s.set]);
+  }, [user, s.subject, s.chapter, s.topic, s.difficulty, s.mode, s.count, s.set, s.paper]);
 
 
   useEffect(() => {
@@ -436,10 +465,14 @@ function TestPage() {
               })}
             </div>
 
-            <div className="mt-auto flex flex-wrap items-center justify-center gap-3 border-t pt-6">
+            <div className="mt-auto flex flex-wrap items-center justify-between sm:justify-center gap-2 sm:gap-3 border-t pt-6">
+              {/* Previous Button: Icon-only on mobile, full text on larger screens */}
               <Button variant="soft" onClick={() => goTo(index - 1)} disabled={index === 0}>
-                <ChevronLeft /> Previous
+                <ChevronLeft className="size-4" />
+                <span className="hidden sm:inline ml-1.5">Previous</span>
               </Button>
+
+              {/* Mark for Review */}
               <Button
                 variant={marked.has(index) ? "secondary" : "outline"}
                 onClick={() =>
@@ -450,16 +483,27 @@ function TestPage() {
                   })
                 }
               >
-                <Flag /> {marked.has(index) ? "Marked for review" : "Mark for review"}
+                <Flag className="size-4 sm:mr-1.5" />
+                <span className="hidden sm:inline">{marked.has(index) ? "Marked for review" : "Mark for review"}</span>
+                <span className="inline sm:hidden">{marked.has(index) ? "Marked" : "Review"}</span>
               </Button>
+
+              {/* Next Button: Icon-only on mobile, full text on larger screens */}
               <Button variant="royal" onClick={() => goTo(index + 1)} disabled={index === questions.length - 1}>
-                Next <ChevronRight />
+                <span className="hidden sm:inline mr-1.5">Next</span>
+                <ChevronRight className="size-4" />
               </Button>
+
+              {/* Clear Answer */}
               <Button variant="ghost" onClick={() => setAnswers((items) => items.map((value, i) => (i === index ? null : value)))}>
-                Clear answer
+                Clear
               </Button>
+
+              {/* Cancel Test */}
               <Button variant="ghost" className="text-destructive" onClick={() => setConfirmCancel(true)}>
-                <LogOut /> Cancel test
+                <LogOut className="size-4 sm:mr-1.5" />
+                <span className="hidden sm:inline">Cancel test</span>
+                <span className="inline sm:hidden">Cancel</span>
               </Button>
             </div>
           </article>

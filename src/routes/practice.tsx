@@ -50,7 +50,10 @@ const ALL = "all";
 const uniq = (xs: string[]) => [...new Set(xs)].sort();
 
 /** Source tags that are part of the general bank, not a standalone paper. */
-const BANK_SOURCES = new Set(["bank", "manual", "community", ""]);
+const BANK_SOURCES = new Set(["bank", "manual", "community", "EASY_QUESTIONS", ""]);
+
+/** Sources to exclude entirely when generating a mock test. */
+const EXCLUDE_SOURCES = new Set(["EASY_QUESTIONS", ""]);
 
 function PracticePage() {
   const { user, loading: authLoading } = useAuth();
@@ -101,17 +104,36 @@ function PracticePage() {
 
   /** Papers discovered automatically from the `source` tag on stored questions. */
   const sourceCards = useMemo(() => {
-    if (!bank) return [];
-    const counts = new Map<string, number>();
-    for (const q of bank) if (!BANK_SOURCES.has(q.source)) counts.set(q.source, (counts.get(q.source) ?? 0) + 1);
-    return [...counts.entries()].map(([source, total]) => ({
+  if (!bank) return [];
+  const counts = new Map<string, number>();
+  for (const q of bank) {
+    if (!BANK_SOURCES.has(q.source)) {
+      counts.set(q.source, (counts.get(q.source) ?? 0) + 1);
+    }
+  }
+
+  return [...counts.entries()].map(([source, total]) => {
+    let title = SET_LABELS[source as keyof typeof SET_LABELS];
+
+    // Format PYQ sources dynamically (e.g., "pyq-2024" -> "MAH MCA CET 2024")
+    if (!title) {
+      if (source.startsWith("pyq-")) {
+        const year = source.split("-")[1];
+        title = `MAH MCA CET ${year}`;
+      } else {
+        title = source.toUpperCase().replace(/-/g, " ");
+      }
+    }
+
+    return {
       source,
       total,
-      title: SET_LABELS[source as keyof typeof SET_LABELS] ?? source.toUpperCase().replace(/-/g, " "),
+      title,
       kind: source.startsWith("pyq") ? ("PYQ" as const) : ("MOCK" as const),
       minutes: 90,
-    }));
-  }, [bank]);
+    };
+  });
+}, [bank]);
 
   function start() {
     if (!requireLogin()) return;
@@ -127,6 +149,17 @@ function PracticePage() {
 
   function generateMock() {
     if (!requireLogin()) return;
+    
+    // Optional: Filter the bank if you want to ensure the generated mock 
+    // strictly excludes questions from these sources.
+    if (bank) {
+      const validPool = bank.filter((q) => !EXCLUDE_SOURCES.has(q.source));
+      if (!validPool.length) {
+        toast.error("No valid questions available for a mock test.");
+        return;
+      }
+    }
+
     void navigate({
       to: "/test",
       search: {
