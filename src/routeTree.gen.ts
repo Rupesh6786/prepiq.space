@@ -16,6 +16,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ExamInfoRouteImport } from './routes/exam-info'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PracticeRouteImport } from './routes/practice'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as SyllabusRouteImport } from './routes/syllabus'
@@ -56,6 +57,11 @@ const PracticeRoute = PracticeRouteImport.update({
   path: '/practice',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/exam-info': typeof ExamInfoRoute
   '/login': typeof LoginRoute
   '/practice': typeof PracticeRoute
+  '/pricing': typeof PricingRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/syllabus': typeof SyllabusRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/exam-info': typeof ExamInfoRoute
   '/login': typeof LoginRoute
   '/practice': typeof PracticeRoute
+  '/pricing': typeof PricingRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/syllabus': typeof SyllabusRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/exam-info': typeof ExamInfoRoute
   '/login': typeof LoginRoute
   '/practice': typeof PracticeRoute
+  '/pricing': typeof PricingRoute
   '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/syllabus': typeof SyllabusRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/exam-info'
     | '/login'
     | '/practice'
+    | '/pricing'
     | '/profile'
     | '/register'
     | '/syllabus'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/exam-info'
     | '/login'
     | '/practice'
+    | '/pricing'
     | '/profile'
     | '/register'
     | '/syllabus'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/exam-info'
     | '/login'
     | '/practice'
+    | '/pricing'
     | '/profile'
     | '/register'
     | '/syllabus'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   ExamInfoRoute: typeof ExamInfoRoute
   LoginRoute: typeof LoginRoute
   PracticeRoute: typeof PracticeRoute
+  PricingRoute: typeof PricingRoute
   ProfileRoute: typeof ProfileRoute
   RegisterRoute: typeof RegisterRoute
   SyllabusRoute: typeof SyllabusRoute
@@ -224,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PracticeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExamInfoRoute: ExamInfoRoute,
   LoginRoute: LoginRoute,
   PracticeRoute: PracticeRoute,
+  PricingRoute: PricingRoute,
   ProfileRoute: ProfileRoute,
   RegisterRoute: RegisterRoute,
   SyllabusRoute: SyllabusRoute,

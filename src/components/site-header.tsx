@@ -214,6 +214,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/pricing" className="hover:text-foreground">
+                Pricing & plans
+              </Link>
+            </li>
+            <li>
               <Link to="/dashboard" className="hover:text-foreground">
                 My analytics
               </Link>

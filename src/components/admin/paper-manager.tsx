@@ -189,7 +189,7 @@ export function PaperManager() {
 
           <div className="rounded-2xl border bg-card p-5 shadow-sm">
             <h3 className="font-display font-bold">Matching questions</h3>
-            <ScrollArea className="mt-3 h-80 pr-3">
+            <ScrollArea className="mt-3 h-160 pr-3">
               <div className="space-y-3">
                 {matched.slice(0, 200).map((q) => (
                   <div key={q.id} className="rounded-xl border p-3">

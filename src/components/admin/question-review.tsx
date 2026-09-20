@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { FilePenLine, Pencil, Save, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
@@ -162,31 +161,6 @@ export function QuestionReview() {
         <Field label="Search">
           <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search wording…" />
         </Field>
-        <div className="sm:col-span-2 lg:col-span-3">
-          <Label>Question content</Label>
-          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
-            {CONTENT_FILTERS.map((item) => (
-              <label key={item.id} className="flex cursor-pointer items-center gap-2 text-sm">
-                <Checkbox
-                  checked={contentFilters.includes(item.id)}
-                  onCheckedChange={() =>
-                    setContentFilters((current) =>
-                      current.includes(item.id)
-                        ? current.filter((value) => value !== item.id)
-                        : [...current, item.id],
-                    )
-                  }
-                />
-                {item.label}
-              </label>
-            ))}
-            {contentFilters.length > 0 && (
-              <Button variant="ghost" size="sm" onClick={() => setContentFilters([])}>
-                Clear content filters
-              </Button>
-            )}
-          </div>
-        </div>
       </section>
 
       <p className="text-sm text-muted-foreground">

@@ -34,7 +34,6 @@ import { SYLLABUS, SUBJECT_MARKS } from "@/data/syllabus";
 import { useAuth } from "@/lib/auth";
 import { QuestionEditor } from "@/components/admin/question-editor";
 import { QuestionReview } from "@/components/admin/question-review";
-import { PdfUpload } from "@/components/admin/pdf-upload";
 import { PaperManager } from "@/components/admin/paper-manager";
 import { Approvals } from "@/components/admin/approvals";
 import { Messages } from "@/components/admin/messages";
@@ -63,7 +62,6 @@ type Tab =
   | "papers"
   | "approvals"
   | "messages"
-  | "upload"
   | "users";
 
 const NAV: { id: Tab; label: string; icon: typeof LayoutDashboard }[] = [
@@ -73,7 +71,6 @@ const NAV: { id: Tab; label: string; icon: typeof LayoutDashboard }[] = [
   { id: "papers", label: "PYQ & mocks", icon: Layers },
   { id: "approvals", label: "Approvals", icon: CheckCircle2 },
   { id: "messages", label: "Messages", icon: Mail },
-  { id: "upload", label: "Upload PDF", icon: FileUp },
   { id: "users", label: "Learners", icon: Users },
 ];
 
@@ -304,21 +301,6 @@ function AdminPage() {
               <Messages />
             </>
           )}
-
-
-
-
-          {tab === "upload" && (
-            <>
-              <h1 className="font-display text-2xl font-extrabold">Upload question PDF</h1>
-              <p className="mt-2 mb-6 flex items-center gap-2 text-muted-foreground">
-                <FileUp className="size-4" /> Upload a question paper — AI reads it, extracts the MCQs and
-                you approve them before saving.
-              </p>
-              <PdfUpload />
-            </>
-          )}
-
 
           {tab === "users" && (
             <>
